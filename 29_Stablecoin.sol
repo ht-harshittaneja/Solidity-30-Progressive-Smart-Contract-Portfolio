@@ -87,9 +87,7 @@ contract StableCoin{
         totalSupply -= amount;
         collateral[msg.sender] -= ethAmount;
 
-        (bool success,) =
-            payable(msg.sender).call{value: ethAmount}("");
-
+        (bool success,) = payable(msg.sender).call{value: ethAmount}("");
         require(success,"TRANSFER FAILED");
     }
 
