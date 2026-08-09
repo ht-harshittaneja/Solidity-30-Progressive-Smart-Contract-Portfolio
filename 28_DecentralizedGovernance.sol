@@ -15,7 +15,7 @@ interface IERC20{
     function balanceOf(address account) external view returns(uint256);
 }
 
-contract DAO{
+contract DecentralizedGovernance{
     IERC20 public governanceToken;
 
     uint256 public nextProposalId;
