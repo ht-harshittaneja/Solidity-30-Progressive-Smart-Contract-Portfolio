@@ -16,10 +16,6 @@ The main idea behind this repository is to learn Solidity by writing contracts r
 - [Getting started](#getting-started)
 - [Compiling and trying a contract](#compiling-and-trying-a-contract)
 - [How the contracts work](#how-the-contracts-work)
-- [Limitations and security notes](#limitations-and-security-notes)
-- [Testing](#testing)
-- [Possible improvements](#possible-improvements)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## What is in this repository?
@@ -252,60 +248,6 @@ The later contracts model selected parts of common decentralised-finance applica
 - `DecentralizedGovernance` uses token balances as voting weight.
 
 These contracts are intentionally simplified so the core logic is easier to study. They do not implement all the mechanisms, safeguards, or economic assumptions of production protocols.
-
-## Limitations and security notes
-
-This repository is a learning portfolio, not a production DeFi or token suite. In particular:
-
-- The source files do not include automated tests, deployment scripts, audit reports, or formal verification.
-- `MyFirstToken` is a basic token exercise. Its `transferFrom` function does not implement the allowance mechanism required by the ERC-20 standard, so it should not be described or integrated as a compliant ERC-20 token.
-- `SimpleNFT` is a minimal NFT-like example and does not implement the full ERC-721 interface.
-- `DecentralizedLottery` includes a randomness-coordinator interface, but its `fulfillRandom` function is labelled as a simulated callback and is restricted to the organizer. It is not a complete, verified Chainlink VRF integration.
-- `StableCoin` uses an owner-updated ETH price rather than a production price-oracle and liquidation system.
-- `TipJar` records USD and EUR tip amounts using manually configured conversion values; those entries are accounting values and do not represent actual USD or EUR transfers.
-- `AutomatedMarketMaker` and `MiniDEX` are simplified exchange examples. They do not include a complete production fee model or the broader protections expected from a deployed DEX.
-- The contracts that transfer Ether or tokens, manage collateral, or hold user funds need careful review for reentrancy, accounting, access-control, and economic edge cases.
-- A Solidity pragma is a compiler compatibility constraint; it is not evidence that a contract has been tested or audited with every compatible compiler version.
-
-Please do not deploy these examples with real funds or rely on them for real-world financial activity. Before any production use, the contracts would need a security review, thorough tests, and appropriate design changes.
-
-## Testing
-
-There is currently no automated test suite in the repository. The examples can be compiled and manually exercised in Remix, but manual interaction is not a substitute for automated tests.
-
-A useful next step would be to add unit tests for expected behaviour and failure cases, including:
-
-- Valid and invalid inputs.
-- Access-control restrictions.
-- Balance changes before and after transfers.
-- Deadline and time-lock boundaries.
-- Reverted transactions and failed external calls.
-- Edge cases in interest, collateral, and swap calculations.
-
-## Possible improvements
-
-These are ideas for future development, not features currently included in the repository:
-
-- Add Foundry tests for each contract, including edge cases and access-control checks.
-- Add a consistent local development and deployment workflow.
-- Use established OpenZeppelin implementations where a standard such as ERC-20, ERC-721, or ownership control is required.
-- Add proper oracle and verifiable-randomness integrations where relevant.
-- Improve NatSpec comments and document constructor parameters and units.
-- Add gas measurements only after setting up repeatable benchmarks.
-
-## Contributing
-
-This is currently a personal learning repository, but suggestions and corrections are welcome.
-
-If you would like to contribute:
-
-1. Open an issue describing the bug, improvement, or concept you want to add.
-2. Keep each example focused on a clear Solidity concept or smart contract use case.
-3. Explain any new dependency or setup requirement.
-4. Include tests when a test framework is added.
-5. Clearly document limitations, especially where an example simplifies a real protocol.
-
-For substantial changes, it is helpful to discuss the proposed approach in an issue before opening a pull request.
 
 ## License
 
